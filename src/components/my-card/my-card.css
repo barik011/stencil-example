@@ -1,0 +1,88 @@
+:host{
+    display: block;
+    margin: 16px;
+    padding: 16px;
+    --ion-color-light: #ffffff;
+    --ion-color-dark: #000000;
+    --ion-color-medium: #888888;
+    --ion-color-primary: #3880ff;
+    --ion-color-secondary: #3dc2ff;
+    --ion-color-tertiary: #7044ff;
+    --ion-color-success: #10dc60;
+    --ion-color-warning: #ffce00;
+    --ion-color-danger: #eb445a;
+    --ion-color-dark-tint: rgba(0, 0, 0, 0.1);
+    --ion-color-light-tint: rgba(255, 255, 255, 0.1);
+    --ion-color-primary-tint: rgba(56, 128, 255, 0.1);
+    --ion-color-secondary-tint: rgba(61, 194, 255, 0.1);
+    --ion-color-tertiary-tint: rgba(112, 68, 255, 0.1);
+    --ion-color-success-tint: rgba(16, 220, 96, 0.1);
+    --ion-color-warning-tint: rgba(255, 206, 0, 0.1);
+    --ion-color-danger-tint: rgba(235, 68, 90, 0.1);
+    --ion-color-primary-shade: rgba(56, 128, 255, 0.2);
+    --ion-color-secondary-shade: rgba(61, 194, 255, 0.2);
+    --ion-color-tertiary-shade: rgba(112, 68, 255, 0.2);
+    --ion-color-success-shade: rgba(16, 220, 96, 0.2);
+    --ion-color-warning-shade: rgba(255, 206, 0, 0.2);
+    --ion-color-danger-shade: rgba(235, 68, 90, 0.2);
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-success-contrast: #ffffff;
+}
+.card{
+    background-color: var(--ion-color-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+}
+.card-header{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.card-content{
+    font-size: 1em;
+    color: var(--ion-color-dark);
+}
+.card-footer{
+    font-size: 0.9em;
+    color: var(--ion-color-medium);
+    text-align: right;
+}
+button{
+    background-color: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.card-react{
+    background-color: var(--ion-color-light);
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid var(--ion-color-medium);
+}
+.card-stencil{
+    background-color: var(--ion-color-light);
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid var(--ion-color-medium);
+}
+.stencil-btn{
+    background-color: var(--ion-color-secondary);
+    color: var(--ion-color-secondary-contrast);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.react-btn{
+    background-color: var(--ion-color-tertiary);
+    color: var(--ion-color-tertiary-contrast);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
