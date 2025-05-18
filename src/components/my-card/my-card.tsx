@@ -12,6 +12,11 @@ export class MyCard{
         this.showStencilContent = false;
     }
 
+    displayTabContent:string='';
+
+    if(this.showStencilContent){
+        this.displayTabContent = stencil;
+    }
 
 
     render(){
