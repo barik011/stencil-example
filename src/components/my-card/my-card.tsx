@@ -11,8 +11,7 @@ export class MyCard{
     @State() showStencilContent: boolean = false;
     @State() showReactContent: boolean = true;
 
-    @Watch('userName')
-    userWatchHandler(newValue: string, oldValue: string){
+    @Watch('userName') userWatchHandler(newValue: string, oldValue: string){
         console.log('userName changed from', oldValue, 'to', newValue);
         this.userName = newValue;
     }
