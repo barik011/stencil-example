@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from "@stencil/core";
+import { Component, h, Prop, State,Watch } from "@stencil/core";
 
 @Component({
     tag: "my-card",
@@ -10,6 +10,13 @@ export class MyCard{
     @State() APIDetails: string = 'API Initial Value';
     @State() showStencilContent: boolean = false;
     @State() showReactContent: boolean = true;
+
+    @Watch('userName')
+    userWatchHandler(newValue: string, oldValue: string){
+        console.log('userName changed from', oldValue, 'to', newValue);
+        this.userName = newValue;
+    }
+
     tabContent(content:string){
         if(content === 'stencil'){
             this.showStencilContent = true;
@@ -27,18 +34,21 @@ export class MyCard{
         }
         
     }
-    connectedCallback(){
-        console.log('connectedCallback');
+    onInputChanges(event:Event){
+        this.userName = (event.target as HTMLInputElement).value;
     }
-    disconnectedCallback(){
-        console.log('disconnectedCallback');
-    }   
-    componentWillLoad(){
-        console.log('componentWillLoad');   
-    }
-    componentDidLoad(){
-        console.log('componentDidLoad');
-    }
+    // connectedCallback(){
+    //     console.log('connectedCallback');
+    // }
+    // disconnectedCallback(){
+    //     console.log('disconnectedCallback');
+    // }   
+    // componentWillLoad(){
+    //     console.log('componentWillLoad');   
+    // }
+    // componentDidLoad(){
+    //     console.log('componentDidLoad');
+    // }
     render(){
         let react = (<div class="card-react">                    
                         <p>React card component.</p> 
@@ -69,7 +79,10 @@ export class MyCard{
                         <button class="stencil-btn" onClick={this.tabContent.bind(this,'stencil')}>Stencil</button>
                         {displayTabContent}
                     </div>
-                </div>           
+                    <input type="text" value={this.userName} onInput={this.onInputChanges.bind(this)} />
+                </div>  
+                
+                
         );
         return myContainer;
     }
