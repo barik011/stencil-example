@@ -11,6 +11,8 @@ export class MyCard{
     @State() showStencilContent: boolean = false;
     @State() showReactContent: boolean = true;
 
+    @State() getPostData: any[] = [];
+
     @Watch('userName') userWatchHandler(newValue: string, oldValue: string){
         console.log('userName changed from', oldValue, 'to', newValue);
         this.userName = newValue;
@@ -42,12 +44,18 @@ export class MyCard{
     // disconnectedCallback(){
     //     console.log('disconnectedCallback');
     // }   
-    // componentWillLoad(){
-    //     console.log('componentWillLoad');   
-    // }
-    // componentDidLoad(){
-    //     console.log('componentDidLoad');
-    // }
+    componentWillLoad(){
+        console.log('componentWillLoad');   
+    }
+    componentDidLoad(){
+        console.log('componentDidLoad');
+        
+    }
+
+    fetchData(){
+       fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>res.json()).then((data)=> this.getPostData=data)
+    }
+
     render(){
         let react = (<div class="card-react">                    
                         <p>React card component.</p> 
@@ -56,7 +64,8 @@ export class MyCard{
 
         let stencil = (<div class="card-stencil">                    
                         <p>Stencil card component.</p> 
-                        <button class="stencil-btn">Stencil Button</button>
+                        <p>API Details: {this.getPostData.length > 0 ? JSON.stringify(this.getPostData[2]) : 'Loading...'}</p>
+                        <button class="stencil-btn" onClick={this.fetchData.bind(this)}>Stencil Button</button>
                       </div>);
 
         let displayTabContent='';
