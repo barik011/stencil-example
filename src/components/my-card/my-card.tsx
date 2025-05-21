@@ -11,7 +11,8 @@ export class MyCard{
     @State() showStencilContent: boolean = false;
     @State() showReactContent: boolean = true;
 
-    @State() getPostData: any[] = [];
+    @State() todoData: any[] = [];
+    @State() userData: any[] = [];
 
     @Watch('userName') userWatchHandler(newValue: string, oldValue: string){
         console.log('userName changed from', oldValue, 'to', newValue);
@@ -52,20 +53,24 @@ export class MyCard{
         
     }
 
-    fetchData(){
-       fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>res.json()).then((data)=> this.getPostData=data)
+    fetchTodoData(){
+       fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>res.json()).then((data)=> this.todoData=data)
+    }
+    fetchUserData(){
+       fetch('https://jsonplaceholder.typicode.com/users').then((res)=>res.json()).then((data)=> this.userData=data)
     }
 
     render(){
         let react = (<div class="card-react">                    
                         <p>React card component.</p> 
-                        <button  class="react-btn">React Button</button>
+                        <p>API Data: {this.todoData.length > 0 ? JSON.stringify(this.todoData[1]) : 'Loading...'}</p>
+                        <button  class="react-btn" onClick={this.fetchTodoData.bind(this)} >React Button</button>
                     </div>);
 
         let stencil = (<div class="card-stencil">                    
                         <p>Stencil card component.</p> 
-                        <p>API Details: {this.getPostData.length > 0 ? JSON.stringify(this.getPostData[2]) : 'Loading...'}</p>
-                        <button class="stencil-btn" onClick={this.fetchData.bind(this)}>Stencil Button</button>
+                        <p>API Data: {this.userData.length > 0 ? JSON.stringify(this.userData[1]) : 'Loading...'}</p>
+                        <button class="stencil-btn" onClick={this.fetchUserData.bind(this)}>Stencil Button</button>
                       </div>);
 
         let displayTabContent='';
